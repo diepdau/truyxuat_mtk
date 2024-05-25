@@ -1,0 +1,13 @@
+.input_file .input_file1{
+    margin-left: 2vh;
+}
+
+
+@media only screen and (max-width: 768px) {
+.input_file1{
+    width: 24%;
+    }
+    .input_file2{
+        width: 70%;
+        }
+}

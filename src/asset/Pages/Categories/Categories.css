@@ -1,0 +1,97 @@
+.userList {
+    flex: 4;
+  }
+  
+  .userListUser {
+    display: flex;
+    align-items: center;
+  }
+  
+  .userListImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .userListEdit{
+      border: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+      background-color: #3bb077;
+      color: white;
+      cursor: pointer;
+      margin-right: 20px;
+  }
+  
+  .userListDelete{
+      color: red;
+      cursor: pointer;
+  }
+
+  .flyout {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+.flyout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #232323;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+
+  cursor: pointer;
+}
+
+.flyout-list {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  padding: 0px;
+  width: 150px;
+
+  background-color: #292929;
+  box-shadow: 3px 3px 4px #141414;
+}
+
+.flyout-item {
+  padding: 1rem;
+  list-style: none;
+  transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.imgactive {
+  width: 300px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.image-item {
+  position: relative;
+  width: 300px;
+}
+@media screen and (max-width: 600px) {
+  .hide-on-small-screen {
+    display: none;
+  }
+}
+@media screen and (min-width: 600px) {
+
+  .on-small-screen{
+    display: none;
+  }
+}
+
+.Toastify__toast-container {
+  position: fixed;
+  top: 90px; /* Đặt khoảng cách từ trên xuống */
+  right: 20px; /* Đặt khoảng cách từ phải qua trái */
+  z-index: 10000; /* Đảm bảo ToastContainer hiển thị trên tất cả các phần tử khác */
+}

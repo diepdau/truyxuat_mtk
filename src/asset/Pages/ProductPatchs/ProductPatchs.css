@@ -1,0 +1,59 @@
+.acc{
+    margin-bottom: 20px;
+}
+.infor, .inforpage{
+    display: flex;
+}
+
+.infor .image1{
+    flex: 4;
+}
+
+.infor .updateimage{
+    flex: 1;
+    
+}
+.infor .updateimage input{
+    gap: 2px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.inforpage{
+    justify-content: space-between;
+}
+
+.iconpage i{
+    margin: 0 8px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid rgb(223, 217, 217);
+    border-radius: 50%;
+    padding: 6px;
+    color: rgb(77, 75, 75);
+}
+#Luu{
+    margin-top: 10px;
+}
+h4 {
+    font-weight: normal;
+    margin-top: 2vh;
+  }
+ 
+.p-image-preview-enter-done{
+    width: 300px;
+}
+.Product_info {
+    border: 2px solid hsl(0, 0%, 91%); /* Màu và độ dày của border */
+    border-radius: 10px; /* Độ cong của góc */
+    padding: 1.5vh; /* Khoảng cách giữa border và nội dung */
+    margin-top: 2vh;
+  }
+  @media only screen and (min-width: 801px) {
+    .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

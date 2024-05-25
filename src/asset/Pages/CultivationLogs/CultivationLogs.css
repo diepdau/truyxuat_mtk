@@ -1,0 +1,24 @@
+.btn_drop{
+    width: 440px;
+}
+.image11 .p-link{
+    background-color: rgb(211, 211, 190);
+}
+.containerCulLog {
+    display: flex;
+    flex-direction: column;
+}
+
+.CultivationLogs_Herd #Update_CultivationLog_Herd{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+.container_button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; 
+    height: 100%; 
+  }
+ 
+  

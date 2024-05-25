@@ -1,0 +1,36 @@
+.nameMap{
+    height: 400px;
+    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+  font-family: sans-serif;
+  color: #333;
+  padding: 20px 0;
+  border: 1px dashed  rgb(164, 164, 164);
+  border-radius:20px ;
+}
+  /* height of the container */
+  .leaflet-container {
+    height: 90vh;
+    width: 95%;
+    background: white !important;;
+  }
+  .leaflet-layer{
+    position: absolute;
+  }
+  
+  .cluster-icon {
+    background-color: #333;
+    height: 2em;
+    width: 2em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: 0 0 0px 5px #fff;
+  }

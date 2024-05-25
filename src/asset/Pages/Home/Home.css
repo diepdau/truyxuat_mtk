@@ -1,0 +1,83 @@
+
+.mar h1{
+  color: #0D955C;
+}
+.mar Button{
+    margin-left: 6px;
+}
+.card  {
+    display: flex;
+    flex-direction: column;
+  }
+.p-input-icon-left .pi{
+  margin-left: -9px;
+    padding: 15px;
+}
+  .product-names {
+    width: 70vh;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-top: 3px solid #0D955C
+ 
+  }
+  
+  .product-names h2 {
+    margin-bottom: 10px;
+  }
+  
+  .product-names ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .product-names li {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+ 
+  .btn_top{
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+  
+  @media screen and (max-width: 450px) {
+    .product-names ul{
+      display:none;
+    }
+    .acc{
+      width: 89%;
+    }
+    .product-names {
+      width: 70vh;
+      margin-right: 0px;
+      padding-right: 0px;
+      border-top: 0px ;
+  }
+  .inforpage h3{
+   font-size: small;
+}
+.p-galleria-thumbnail-container{
+display: none;
+}
+.p-button {
+  padding: 1px 2px;
+  }
+}
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+/* .p-tabview .p-tabview-panels {
+  padding: 0px;
+} */
+.chart-container .p-chart-label {
+  transform: rotate(-45deg);
+  white-space: nowrap;
+}
+.div_main{
+  margin: 120px 40px;
+  width: 95%;
+}
+

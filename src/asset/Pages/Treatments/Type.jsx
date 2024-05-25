@@ -1,0 +1,20 @@
+const typeOptions = [
+  "Thụ tinh nhân tạo (Alternative Therapy)",
+  "Thiến (Castration)",
+  "Khử sừng (Dehorning)",
+  "Nha khoa (Dental Procedure)",
+  "Tẩy giun (Deworming)",
+  "Bấm lỗ tai (Ear Notching)",
+  "An tử (Euthanasia)",
+  "Chải chuốt (Grooming)",
+  "Cắt móng (Hoof Trim)",
+  "Thuốc (Medication)",
+  "Ve (Mites)",
+  "Điều trị ký sinh trùng (Parasite Treatment)",
+  "Phẫu thuật (Surgical Procedure)",
+  "Gắn thẻ (Tagging)",
+  "Xăm hình (Tattoo)",
+  "Tiêm chủng (Vaccination)",
+  "Khác (Other Procedure)",
+];
+export default typeOptions;

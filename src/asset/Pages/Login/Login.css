@@ -1,0 +1,173 @@
+.register-page{
+	height:100vh;
+	display:flex;
+	justify-content:center;
+  align-items: center;
+  /* background-image: url('luamach.jpg'); */
+	
+}
+.branding {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.branding img {
+  width: 9vh; 
+}
+
+.branding h1 {
+  font-size: 3vh;
+  color: #0D955C; 
+}
+
+.register-form-container{
+  width: 376px;
+  padding:30px 40px;
+  box-shadow: 0px 0px 21px rgba(107, 113, 111, 0.2);
+  border-radius: 8px;
+  background:#fff;
+}
+.titlelogin{
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 18px 82px;
+}
+.label{
+  width:100%;
+  display:block;
+}
+.form-control{
+  height: 40px;
+  display:block;
+  width:100%;
+  padding:6px 12px;
+  border-radius: 8px;
+  border: 2px solid #CECBCB;
+}
+.mb-2{
+  margin-bottom:12px;
+}
+.mb-2 input{
+margin-top: 2px;
+  }
+
+.error-feedback{
+	color:red;
+	margin-top:8px;
+}
+.form-control:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 21px rgb(13 149 92 / 20%);
+}
+.mb-2 input:active {
+  border: 1px 1px 21px solid purple;
+}
+
+.submit-btn {
+  height: 40px;
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin: 27px 0px 52px 0px;
+}
+
+.submit-btn:hover {
+  background-color: #088247; /* Màu xanh nhạt hơn khi hover */
+}
+.toggle-password {
+  position: absolute;
+  right: 21px;
+  top: 14px;
+  cursor: pointer;
+
+}
+
+.toggle-password i {
+  font-size: 26px;
+
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.form-control {
+  position: relative;
+  padding-right: 5px; /* Thêm khoảng chừa cho biểu tượng mắt */
+}
+
+.forgot-password{
+  color: #666666;
+  margin-left: 158px;
+}
+
+.forgot-password:hover{
+  color: #088247;
+  font-weight: bold;
+}
+.or-divider {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.or-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #b5b0b0;
+}
+
+.or-text {
+  margin: 0 16px;
+  color: #666666;
+  font-weight: bold;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+
+  
+}
+
+.social-icons> .icon {
+    border-radius: 60%;
+    padding: 12px;
+    box-shadow: 1px 1px rgb(182, 178, 178);
+    margin: 0 10px;
+}
+
+.icon i {
+  font-size: 38px;
+  color: #a00606;
+}
+
+.create-account{
+  align-items: center;
+  justify-content: center;
+  color: #666666; 
+  display: flex;
+  align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+  white-space: nowrap;
+
+}
+.create-account span{
+  color: #088247;
+  font-weight: bold;
+  
+}
+.create-account p{
+  cursor:default;
+}
+
+.mb-2 .text-note{
+  padding: 0;
+  color: #666666;
+}
