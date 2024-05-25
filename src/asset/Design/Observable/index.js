@@ -13,35 +13,11 @@ export function NotifiUpdate() {
 export function NotifiDelete() {
   observable.notify("Xóa thành công!");
 }
-export function NotifiCreateRecord() {
-  observable.notify("Tạo con trong đàn thành công!");
-}
-
-export function NotifiLogin() {
-  observable.notify("Đăng nhập thành công!");
-}
-export function NotifiRegister() {
-  observable.notify("Tạo tài khoản thành công!");
-}
 
 function toastify(data) {
   toast.success(data);  
 }
 observable.subscribe(toastify);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function logger(data) {
   console.log(`${Date.now()} ${data}`);
@@ -56,3 +32,13 @@ observable.subscribe(logger);
 //   }
 // }
 
+export function NotifiCreateRecord() {
+  observable.notify("Tạo con trong đàn thành công!");
+}
+
+export function NotifiLogin() {
+  observable.notify("Đăng nhập thành công!");
+}
+export function NotifiRegister() {
+  observable.notify("Tạo tài khoản thành công!");
+}

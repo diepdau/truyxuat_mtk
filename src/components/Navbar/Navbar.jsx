@@ -17,7 +17,7 @@ export default function Navbar(ref) {
 
   const handleUpdateUserName = async (userId) => {
     try {
-      // await logout( token);
+      await logout( token);
       navigate("/");
     } catch (err) {
       console.log(err);
