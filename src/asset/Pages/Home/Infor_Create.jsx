@@ -7,8 +7,7 @@ import { Dropdown } from "primereact/dropdown";
 import { InputTextarea } from "primereact/inputtextarea";
 import { InputText } from "primereact/inputtext";
 import { Calendar } from "primereact/calendar";
-import { ToastContainer } from "react-toastify";
-import { NotifiCreate } from "../../Design/Observable/index.js";
+import Observer from "../../Design/Observable/Observer.jsx";
 const initFormValue = {
   name: "",
   member_count: 0,
@@ -54,7 +53,7 @@ function Infor_Herd({ isUpdate, reloadData }) {
     }
     try {
        handleCreate(formData,token);
-       NotifiCreate();
+      Observer.notify(`Đàn ${formData.name} mới tạo`)
       setFormData(initFormValue);
       reloadData();
       reloadData();
@@ -97,7 +96,6 @@ function Infor_Herd({ isUpdate, reloadData }) {
   return (
     <div>
       <div className="container_update">
-      <ToastContainer />
 
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <Toast className="toast" ref={toast} />

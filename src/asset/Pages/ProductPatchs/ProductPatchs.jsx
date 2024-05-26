@@ -20,7 +20,6 @@ import {
   SearchBar,
   CustomPaginator,
 } from "../../../components/Total_Interface/index.jsx";
-import { ToastContainer } from "react-toastify";
 import {NotifiDelete} from "../../Design/Observable/index.js";
 const emptyProduct = {
   _id: null,
@@ -203,8 +202,7 @@ export default function SizeDemo() {
     </div>
   );
   return (
-    <div className="div_main">      <ToastContainer />
-
+    <div className="div_main">     
       <div className="card">
         <Toolbar
           className="mb-4"

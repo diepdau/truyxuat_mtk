@@ -8,7 +8,6 @@ import typeOptions from "./Type.jsx";
 import { handleCreate, handleUpdate } from "../../service/treatment_data.js";
 import { getHerd } from "../../service/harvest_data.js";
 import { AuthContext } from "../../service/user_service.js";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate,NotifiCreate} from "../../Design/Observable/index.js";
 const emptyProduct = {
   herd: "",
@@ -171,7 +170,6 @@ function YourComponent({ idherd,data, reloadData, isUpdate, nameherd }) {
   return (
     <div>
       <div className="container_update">
-        <ToastContainer />
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           {idherd ? (
             ""

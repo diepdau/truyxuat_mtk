@@ -1,7 +1,6 @@
 import React, { useState,  useContext } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate } from "../../Design/Observable/index.js";
 import { handleCreate } from "../../service/disease_data.js";
 import { AuthContext } from "../../service/user_service.js";
@@ -85,7 +84,6 @@ function YourComponent({ reloadData }) {
 
   return (
     <div>
-      <ToastContainer />
       <div className="container_update_areas">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Tên</h4>

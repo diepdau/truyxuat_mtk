@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect,useContext } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate } from "../../Design/Observable/index.js";
 import "./Harvest.css";
 import { Calendar } from "primereact/calendar";
@@ -144,7 +143,6 @@ function YourComponent({ data, reloadData, isProcessors }) {
     <div>
       <div className="container_update">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
-          <ToastContainer />
           {isProcessors ? null : (
             <>
               <h4>Đàn</h4>

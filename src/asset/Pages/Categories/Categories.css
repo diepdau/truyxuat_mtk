@@ -91,7 +91,7 @@
 
 .Toastify__toast-container {
   position: fixed;
-  top: 90px; /* Đặt khoảng cách từ trên xuống */
-  right: 20px; /* Đặt khoảng cách từ phải qua trái */
-  z-index: 10000; /* Đảm bảo ToastContainer hiển thị trên tất cả các phần tử khác */
+  top: 90px; 
+  right: 20px;
+  z-index: 10000; 
 }

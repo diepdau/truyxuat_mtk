@@ -4,7 +4,6 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
-import { Toast } from "primereact/toast";
 import "../Home/HerdsList.css";
 import { TabView, TabPanel } from "primereact/tabview";
 import Diseases_Update from "./Diseases_Update.jsx";
@@ -16,7 +15,6 @@ import { AuthContext } from "../../service/user_service.js";
 import { CustomDialog,} from "../../../components/Total_Interface/index.jsx";
 import withLoader from "../../Design/HOC/withLoader.js";
 import { InputText } from 'primereact/inputtext';
-import { ToastContainer } from "react-toastify";
 import { NotifiDelete } from "../../Design/Observable/index.js";
 const emptyProduct = {
   _id: null,
@@ -147,8 +145,6 @@ const emptyProduct = {
   );
   return (
     <div className="div_main">
-            <ToastContainer />
-
       <div className="card">
         <Toolbar
           className="mb-4"

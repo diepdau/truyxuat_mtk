@@ -2,9 +2,8 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { AuthContext } from "../../service/user_service.js";
-import { ToastContainer, toast } from "react-toastify";
-import { NotifiLogin } from "../../Design/Observable/index.js";
-
+import Observer from "../../Design/Observable/Observer.jsx";
+import { toast } from "react-toastify";
 export const validateInput = (str = "") => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(str);
@@ -13,7 +12,7 @@ export const validateInput = (str = "") => {
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginApi } = useContext(AuthContext);
+  const { loginApi,currentUser } = useContext(AuthContext);
   const [err, setError] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -35,7 +34,7 @@ const Login = () => {
     setLoading(true);
     try {
       await loginApi({ email, password });
-      NotifiLogin();
+      Observer.notify("Đăng nhập thành công!");
       navigate("/danh-sach-dan");
     } catch (err) {
       toast.error("Lỗi đăng nhập");
@@ -52,8 +51,6 @@ const Login = () => {
 
   return (
     <div className="register-page">
-      <ToastContainer/>
-
       <div className="register-form-container">
         <div className="branding">
           <i

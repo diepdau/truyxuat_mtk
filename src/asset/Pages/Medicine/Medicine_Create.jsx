@@ -1,7 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import {
   NotifiUpdate,
   NotifiCreate,
@@ -108,8 +107,6 @@ function YourComponent({ data, reloadData, isUpdate }) {
         {/* Cột trái */}
         <div style={{ flex: 1 }}>
           <div>
-            {" "}
-            <ToastContainer />
             <h4>Tên</h4>
             <InputText
               name="name"

@@ -11,7 +11,6 @@ import {
 } from "../../service/user_data.js";
 import { AuthContext } from "../../service/user_service.js";
 import { Dialog } from "primereact/dialog";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate} from "../../Design/Observable/index.js";
 const initFormValue = {
   first_name: "",
@@ -96,7 +95,6 @@ export default function User() {
       {user && Object.keys(user).length > 0 && (
         <>
           <div className="userTitleContainer">
-          < ToastContainer/>
             <h2 className="userTitle">Tài khoản</h2>
 
             <Button

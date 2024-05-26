@@ -15,7 +15,6 @@ import { Dialog } from "primereact/dialog";
 import { Dropdown } from "primereact/dropdown";
 import { useNavigate } from "react-router-dom";
 import { CustomDialog } from "../../../components/Total_Interface/index.jsx";
-import { ToastContainer } from "react-toastify";
 import {
   NotifiUpdate,
   NotifiDelete,
@@ -179,7 +178,6 @@ export default function SizeDemo() {
   };
   return (
     <div className="div_main">
-      <ToastContainer />
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

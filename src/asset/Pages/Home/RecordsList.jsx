@@ -17,12 +17,11 @@ import { Calendar } from "primereact/calendar";
 import ImageUploader from "../../../components/Images/Image";
 import { AuthContext } from "../../service/user_service.js";
 import { CustomDialog } from "../../../components/Total_Interface/index.jsx";
-import { ToastContainer } from "react-toastify";
 import {
   NotifiUpdate,
   NotifiDelete,
-  NotifiCreateRecord,
 } from "../../Design/Observable/index.js";
+import Observer from "../../Design/Observable/Observer.jsx";
 const emptyProduct = {
   _id: null,
   name: "",
@@ -76,7 +75,7 @@ export default function SizeDemo({ herdId }) {
       await createNewAutoHerd(herdId, product.quantity, token);
       setProductDialogNewAuto(false);
       reloadData();
-      NotifiCreateRecord();
+      Observer.notify("Tạo con trong đàn thành công");
     } catch (error) {
       console.log("Error:", error);
     }
@@ -238,7 +237,6 @@ export default function SizeDemo({ herdId }) {
   };
   return (
     <div className={herdId ? "" : "div_main"}>
-      <ToastContainer />
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

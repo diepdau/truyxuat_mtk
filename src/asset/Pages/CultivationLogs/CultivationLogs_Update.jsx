@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate } from "../../Design/Observable/index.js";
 import "./CultivationLogs.css";
 import { Calendar } from "primereact/calendar";
@@ -90,8 +89,6 @@ function YourComponent({ reloadData, data }) {
   }
   return (
     <div>
-            <ToastContainer />
-
       <div className="container_update ">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Tên</h4>

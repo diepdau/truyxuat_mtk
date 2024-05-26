@@ -4,7 +4,6 @@ import { Button } from "primereact/button";
 import ImageUploader from "../../../components/Images/Image";
 import { handleCreate, handleUpdate } from "../../service/categories_data.js";
 import { AuthContext } from "../../service/user_service.js";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate, NotifiUpdate } from "../../Design/Observable/index.js";
 
 const emptyData = {
@@ -71,7 +70,6 @@ function YourNewComponent({ reloadData, data, isUpdate }) {
   return (
     <div>
       <div className="container_update_areas">
-        <ToastContainer />
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           {/* Cột trái */}
           <h4>Tên nhóm</h4>

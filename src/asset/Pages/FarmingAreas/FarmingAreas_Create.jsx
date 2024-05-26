@@ -1,7 +1,6 @@
 import React, { useState,  useContext } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate, NotifiUpdate } from "../../Design/Observable/index.js";
 import "./FarmingAreas.css";
 import { InputText } from "primereact/inputtext";
@@ -112,8 +111,6 @@ function YourNewComponent({ reloadData, data, isUpdate }) {
 
   return (
     <div>
-      <ToastContainer />
-
       <div className="container_update_areas">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           {/* Cột trái */}

@@ -8,7 +8,6 @@ import {
   handleUpdateAnimal,
 } from "../../service/Herd_data.js";
 import { AuthContext } from "../../service/user_service.js";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate } from "../../Design/Observable/index.js";
 
 const emptyProduct = {
@@ -94,7 +93,6 @@ function YourComponent({ herdId, data, reloadData, isUpdate }) {
 
   return (
     <div>
-      <ToastContainer />
       <div className="container_update">
         <div
           style={{

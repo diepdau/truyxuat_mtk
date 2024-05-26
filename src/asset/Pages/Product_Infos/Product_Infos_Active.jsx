@@ -5,7 +5,6 @@ import "./Product_Infos.css";
 import { InputTextarea } from "primereact/inputtextarea";
 import { handleCreate,handleGetProductInfor,handleUpdate} from "../../service/productInfor_data.js";
 import { AuthContext } from "../../service/user_service.js";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate,NotifiCreate } from "../../Design/Observable/index.js";
 const emptyProduct = {
   _id: "",
@@ -97,7 +96,7 @@ function YourComponent({
     return isValid;
   };
   return (
-    <div>      <ToastContainer />
+    <div>     
       <div className="container_update">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Loại sản phẩm</h4>

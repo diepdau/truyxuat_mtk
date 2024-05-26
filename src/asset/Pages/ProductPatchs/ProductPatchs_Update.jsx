@@ -6,7 +6,6 @@ import { Calendar } from "primereact/calendar";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import Product_Infos_Actives from "../Product_Infos/Product_Infos_Active.jsx";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate } from "../../Design/Observable/index.js";
 import {
   handleUpdate,
@@ -160,8 +159,6 @@ function YourComponent({ data, reloadData, isUpdate, isProProduct }) {
   return (
     <div>
       <div className="container_update">
-        <ToastContainer />
-
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Tên sản phẩm</h4>
           {isProProduct ? (

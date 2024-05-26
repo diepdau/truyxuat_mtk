@@ -5,7 +5,6 @@ import { Galleria } from "primereact/galleria";
 import { InputText } from "primereact/inputtext";
 import { AuthContext } from "../../asset/service/user_service.js";
 import "./Image.css";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate } from "../../asset/Design/Observable/index.js";
 const ImageUploader = ({  uploadUrl, images, reloadData }) => {
   
@@ -54,7 +53,6 @@ const ImageUploader = ({  uploadUrl, images, reloadData }) => {
 
   return (
     <div>
-      <ToastContainer/>
       {err && toast.error({err})}
       <Galleria
         className="Image_animals"

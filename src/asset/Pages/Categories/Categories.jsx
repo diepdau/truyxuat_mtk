@@ -15,7 +15,6 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import withLoader from "../../Design/HOC/withLoader.js";
 import ImageList from "../../Design/Compound_Category/ImageList.js";
-import { ToastContainer } from "react-toastify";
 import { NotifiDelete } from "../../Design/Observable/index.js";
 const emptyProduct = {
   _id: null,
@@ -124,7 +123,6 @@ const Category = (props) => {
   );
   return (
     <div className="div_main">
-      <ToastContainer />
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

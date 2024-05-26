@@ -28,6 +28,9 @@ import Treatments  from "./asset/Pages/Treatments/Treatments.jsx";
 import Main from "./components/Sidebar/Main.jsx";
 import ForgotPasswordPage from "./asset/Pages/Login/ForgotPassword.jsx";
 import ProductInfos from "./asset/Pages/Product_Infos/Product_Infos.jsx";
+import { ToastContainer } from "react-toastify";
+import NotificationBox from "./asset/Pages/Home/Notification.jsx";
+
 export const themes = {
   light: {
     background: "#fff",
@@ -46,12 +49,14 @@ const Layout = () => {
 
   return (
     <div  >
+
      {currentUser && (
       <>
       <nav className="navbar">
         <Navbar />
-      </nav>
+        <NotificationBox /> 
 
+      </nav>
           <Main/>
       </>
       
@@ -150,6 +155,7 @@ const router = createBrowserRouter([
 
   return (
     <div>
+      <ToastContainer/>
       <RouterProvider router={router} />  
     </div>
   );

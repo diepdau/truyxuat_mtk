@@ -4,7 +4,6 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
-import { ToastContainer } from "react-toastify";
 import { NotifiDelete } from "../../Design/Observable/index.js";
 import { TabView, TabPanel } from "primereact/tabview";
 import Product_Infos_Active from "./Product_Infos_Active.jsx";
@@ -149,7 +148,6 @@ export default function ProductInfos() {
 
   return (
     <div className="div_main">
-      <ToastContainer />
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

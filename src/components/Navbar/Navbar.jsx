@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../asset/service/user_service.js";
 import Sidebar from "../Sidebar/Sidebar.js";
 import { SidebarContext } from "../Sidebar/SidebarContext.js"; // Import SidebarContext
-
+import Observer from "../../asset/Design/Observable/Observer.jsx";
 export default function Navbar(ref) {
   const { currentUser, logout, token } = useContext(AuthContext);
   const { isVisibleSidebar, setIsVisibleSidebar } = useContext(SidebarContext); // Use SidebarContext
@@ -18,6 +18,7 @@ export default function Navbar(ref) {
   const handleUpdateUserName = async (userId) => {
     try {
       await logout( token);
+      Observer.notify(`Đăng xuất thành công`);
       navigate("/");
     } catch (err) {
       console.log(err);

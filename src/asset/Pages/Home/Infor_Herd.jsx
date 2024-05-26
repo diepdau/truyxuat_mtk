@@ -6,8 +6,7 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { Calendar } from "primereact/calendar";
 import ImageUploader from "../../../components/Images/Image";
-import { ToastContainer } from "react-toastify";
-import { NotifiUpdate } from "../../Design/Observable/index.js";
+import Observer from "../../Design/Observable/Observer.jsx";
 import "./HerdsList.css";
 import {
   fetchHerd,
@@ -96,18 +95,13 @@ function YourComponent({ herdId, data, isUpdate, reloadData }) {
     try {
       if (isUpdate) {
         const a = await handleUpdate(herdId, product, token);
-        NotifiUpdate();
+        Observer.notify(`${product.name} đã được chỉnh sửa`)
         setProduct({
           ...product,
         });
-        console.log(a);
       } else {
         await handleCreate(product, token);
-        toast.current.show({
-          severity: "success",
-          summary: "Thêm hoàn thành",
-          life: 3000,
-        });
+        
         setProduct(emptyProduct);
       }
       reloadData();
@@ -152,7 +146,6 @@ function YourComponent({ herdId, data, isUpdate, reloadData }) {
   return (
     <div>
       <div className="container_update">
-        <ToastContainer />
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <Toast className="toast" ref={toast} />
           <h4>Tên</h4>

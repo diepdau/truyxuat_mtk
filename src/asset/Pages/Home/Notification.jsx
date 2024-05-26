@@ -1,20 +1,20 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../service/user_service.js";
 import { fetchNotifications } from "../../service/Herd_data.js";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Observer from "../../Design/Observable/Observer.jsx";
+
 
 const NotificationBox = () => {
   const { token } = useContext(AuthContext);
+  const [triggerFetch, setTriggerFetch] = useState(false); // Sử dụng state để ghi nhận sự thay đổi
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetchNotifications(token);
         console.log(response);
-
-        // Lấy 3 thông báo đầu tiên
-        const firstThreeNotifications = response.slice(0, 3);
+        const firstThreeNotifications = response.slice(0, 2);
 
         firstThreeNotifications.forEach((notification) => {
           const herdNameMatch = notification.message.match(
@@ -22,30 +22,24 @@ const NotificationBox = () => {
           );
           if (herdNameMatch) {
             const herdName = herdNameMatch[1];
-            toast.success(`Đàn ${herdName} đã đến tuổi thu hoạch`);
+            Observer.notify(`Đàn ${herdName} đã đến tuổi thu hoạch`);
           }
         });
       } catch (error) {
         console.error("Error fetching notifications:", error);
       }
     };
-    const interval = setInterval(fetchData, 60000);
-    return () => clearInterval(interval);
-  }, [token]);
 
-  return (
-    <ToastContainer
-      position="top-right"
-      autoClose={10000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-    />
-  );
+    fetchData();
+
+    const interval = setInterval(() => {
+      setTriggerFetch((prev) => !prev);
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, [token, triggerFetch]);
+
+  return null;
 };
 
 export default NotificationBox;

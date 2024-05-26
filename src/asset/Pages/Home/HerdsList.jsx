@@ -11,14 +11,12 @@ import { AuthContext } from "../../service/user_service.js";
 import { handleDelete, handleGet } from "../../service/Herd_data.js";
 import { classNames } from "primereact/utils";
 import { Dialog } from "primereact/dialog";
-import NotificationBox from "./Notification.jsx";
 import {
   CustomDialog,
   SearchBar,
   CustomPaginator,
 } from "../../../components/Total_Interface/index.jsx";
-import { NotifiDelete } from "../../Design/Observable/index.js";
-
+import Observer from "../../Design/Observable/Observer.jsx";
 const emptyProduct = {
   _id: null,
 };
@@ -95,7 +93,7 @@ export default function SizeDemo() {
       handleDeleteUser(selectedProduct);
       reloadData();
       setDeleteProductsDialog(false);
-      NotifiDelete();
+     Observer.notify(`Đàn mã ${selectedProduct.name} đã xóa`)
     }
   };
   const deleteProduct = () => {
@@ -104,7 +102,8 @@ export default function SizeDemo() {
     handleDeleteUser(firstObject);
     reloadData();
     setDeleteProductDialog(false);
-    NotifiDelete();
+    Observer.notify(`Đàn mã ${firstObject.name} đã xóa`)
+
   };
   const navigate = useNavigate();
   const onRowDoubleClick = () => {
@@ -188,7 +187,6 @@ export default function SizeDemo() {
   return (
     <div>
       <Toast className="toast" ref={toast} />
-      <NotificationBox/>
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

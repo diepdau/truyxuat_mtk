@@ -4,7 +4,6 @@ import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
-import { ToastContainer } from "react-toastify";
 import { NotifiDelete } from "../../Design/Observable/index.js";
 import "../Home/HerdsList.css";
 import { TabView, TabPanel } from "primereact/tabview";
@@ -133,8 +132,6 @@ export default function CulivationLogs_Herd({ idherd }) {
 
   return (
     <div className={idherd ? "" : "div_main"}>
-           <ToastContainer />
-
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

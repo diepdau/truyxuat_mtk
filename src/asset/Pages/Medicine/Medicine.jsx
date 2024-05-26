@@ -9,7 +9,6 @@ import {
   SearchBar,
   CustomPaginator,
 } from "../../../components/Total_Interface/index.jsx";
-import { ToastContainer } from "react-toastify";
 import {NotifiDelete
 } from "../../Design/Observable/index.js";
 import "../Home/HerdsList.css";
@@ -160,7 +159,6 @@ export default function SizeDemo() {
   );
   return (
     <div className="div_main">
-      <ToastContainer />
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
         <DataTable

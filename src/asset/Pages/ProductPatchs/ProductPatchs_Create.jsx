@@ -6,7 +6,6 @@ import { Calendar } from "primereact/calendar";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Dropdown } from "primereact/dropdown";
 import { classNames } from "primereact/utils";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate } from "../../Design/Observable/index.js";
 import {
   handleCreate,
@@ -157,7 +156,6 @@ function YourComponent({ reloadData, isUpdate }) {
   return (
     <div>
       <div className="container_update">
-        <ToastContainer />
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <div className="input-container">
             <div style={{ width: "100%", marginRight: "2vh", flex: "3" }}>

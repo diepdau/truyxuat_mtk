@@ -1,7 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import { NotifiUpdate } from "../../Design/Observable/index.js";
 import { handleUpdate } from "../../service/disease_data.js";
 import { AuthContext } from "../../service/user_service.js";
@@ -86,7 +85,6 @@ function YourComponent({ data, reloadData }) {
 
   return (
     <div>
-      <ToastContainer />
       <div className="container_update_areas">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Tên bệnh</h4>

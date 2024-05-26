@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { ToastContainer } from "react-toastify";
 import { NotifiCreate } from "../../Design/Observable/index.js";
 import "./CultivationLogs.css";
 import { Calendar } from "primereact/calendar";
@@ -73,7 +72,6 @@ function YourComponent({ reloadData, herd_id }) {
 
   return (
     <div>
-      <ToastContainer />
       <h4>Tên</h4>
       <InputTextarea
         name="name"
