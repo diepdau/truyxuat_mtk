@@ -12,26 +12,23 @@ const NotificationBox = () => {
       try {
         const response = await fetchNotifications(token);
         console.log(response);
-        const firstNotification = response[0];
 
-        if (firstNotification) {
-          const herdNameMatch = firstNotification.message.match(
+        // Lấy 3 thông báo đầu tiên
+        const firstThreeNotifications = response.slice(0, 3);
+
+        firstThreeNotifications.forEach((notification) => {
+          const herdNameMatch = notification.message.match(
             /Herd (\w+) has reached the harvest age\./
           );
           if (herdNameMatch) {
             const herdName = herdNameMatch[1];
-            toast.success(`Đàn ${herdName} đã đến tuổi thu hoạch`, {
-              position: "top-right",
-              autoClose: 9000,
-            });
+            toast.success(`Đàn ${herdName} đã đến tuổi thu hoạch`);
           }
-        }
+        });
       } catch (error) {
         console.error("Error fetching notifications:", error);
       }
     };
-
-    fetchData();
     const interval = setInterval(fetchData, 60000);
     return () => clearInterval(interval);
   }, [token]);
@@ -39,7 +36,7 @@ const NotificationBox = () => {
   return (
     <ToastContainer
       position="top-right"
-      autoClose={9000}
+      autoClose={10000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick

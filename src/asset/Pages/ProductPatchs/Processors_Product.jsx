@@ -20,9 +20,6 @@ export default function SizeDemo() {
   const toast = useRef(null);
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    fetchData();
-  }, [products]);
 
   const fetchData = async () => {
     try {
@@ -36,16 +33,20 @@ export default function SizeDemo() {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, [token]); // Chỉ gọi API khi token thay đổi
+
   const reloadData = () => {
     fetchData();
   };
+
   const [expandedRows, setExpandedRows] = useState(null);
   const rowExpansionTemplate = (data) => {
     return (
       <>
         <TabView>
           <TabPanel header="Thông tin chi tiết">
-            {/* eslint-disable-next-line react/jsx-pascal-case */}
             <ProductPatchs_Update
               data={data}
               reloadData={reloadData}
@@ -61,6 +62,7 @@ export default function SizeDemo() {
       </>
     );
   };
+
   const imageBodyTemplate = (rowData) => {
     return (
       <>
@@ -73,9 +75,11 @@ export default function SizeDemo() {
       </>
     );
   };
+
   const allowExpansion = (rowData) => {
     return rowData;
   };
+
   const leftToolbarTemplate = () => {
     return (
       <div className="flex flex-wrap gap-2">

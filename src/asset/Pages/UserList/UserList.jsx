@@ -19,7 +19,6 @@ import { ToastContainer } from "react-toastify";
 import {
   NotifiUpdate,
   NotifiDelete,
-  NotifiCreateRecord,
   NotifiCreate,
 } from "../../Design/Observable/index.js";
 const emptyProduct = {
@@ -41,26 +40,25 @@ export default function SizeDemo() {
   const [productDialog, setProductDialog] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState(null);
   useEffect(() => {
-    const fetchData = async () => {
-      const userList = await getuserList(token);
-      const activeList = await getActive(token);
-      setActive(activeList.data.users);
-      userList.data.users.forEach((element) => {
-        let isActive = false;
-        for (const activeUser of activeList.data.users) {
-          if (activeUser === element.email) {
-            isActive = true;
-            break;
-          }
-        }
-        element.address = isActive ? "hoạt động" : "";
-      });
-      setProducts(userList.data.users);
-    };
-
     fetchData();
-  });
-
+  },[]);
+  const fetchData = async () => {
+    const userList = await getuserList(token);
+    const activeList = await getActive(token);
+    setActive(activeList.data.users);
+    userList.data.users.forEach((element) => {
+      let isActive = false;
+      for (const activeUser of activeList.data.users) {
+        if (activeUser === element.email) {
+          isActive = true;
+          break;
+        }
+      }
+      element.address = isActive ? "hoạt động" : "";
+    });
+    console.log(userList);
+    setProducts(userList.data.users);
+  };
   const roles = [{ name: "user" }, { name: "manager" }];
 
   const roleEditor = () => {

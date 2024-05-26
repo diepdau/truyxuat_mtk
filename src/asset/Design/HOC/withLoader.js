@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 export default function withLoader(Element, url) {
   return (props) => {
     const [data, setData] = useState(null);
 
-    useEffect(() => {
-      async function getData() {
+    const fetchData = async () => {
+      try {
         const res = await fetch(url);
         const data = await res.json();
-        console.log(data);
         setData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-      getData();
+    };
+
+    useEffect(() => {
+      fetchData();
     }, []);
 
     if (!data) {
       return <div>Loading...</div>;
     }
 
-    return <Element {...props} data={data} />;
+    return <Element {...props} reloadData={fetchData} data={data} />;
   };
 }

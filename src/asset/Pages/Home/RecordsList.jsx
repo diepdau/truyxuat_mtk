@@ -18,7 +18,11 @@ import ImageUploader from "../../../components/Images/Image";
 import { AuthContext } from "../../service/user_service.js";
 import { CustomDialog } from "../../../components/Total_Interface/index.jsx";
 import { ToastContainer } from "react-toastify";
-import { NotifiUpdate,NotifiDelete,NotifiCreateRecord } from "../../Design/Observable/index.js";
+import {
+  NotifiUpdate,
+  NotifiDelete,
+  NotifiCreateRecord,
+} from "../../Design/Observable/index.js";
 const emptyProduct = {
   _id: null,
   name: "",
@@ -108,7 +112,7 @@ export default function SizeDemo({ herdId }) {
     for (const selectedProduct of selectedProducts) {
       handleDeleteUser(selectedProduct);
     }
-    NotifiDelete()
+    NotifiDelete();
     setDeleteProductsDialog(false);
   };
   const deleteProduct = () => {
@@ -116,7 +120,7 @@ export default function SizeDemo({ herdId }) {
     const firstObject = _products[0];
     handleDeleteUser(firstObject);
     setDeleteProductDialog(false);
-    NotifiDelete()
+    NotifiDelete();
   };
 
   const confirmDeleteProduct = (product) => {

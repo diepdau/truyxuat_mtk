@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { Button } from "primereact/button";
 import { Toolbar } from "primereact/toolbar";
-import { Toast } from "primereact/toast";
+import { InputText } from 'primereact/inputtext';
 import "../Home/HerdsList.css";
 import Categories_Create from "./Categories_Create.jsx";
 import { TabPanel, TabView } from "primereact/tabview";
 import {
   CustomDialog,
-  SearchBar,
-  CustomPaginator,
 } from "../../../components/Total_Interface/index.jsx";
 import { urlGet, handleDelete } from "../../service/categories_data.js";
 import { AuthContext } from "../../service/user_service.js";
@@ -31,27 +29,20 @@ const Category = (props) => {
   const [product, setProduct] = useState(emptyProduct);
   const [productDialog, setProductDialog] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState(null);
-  const toast = useRef(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentLimit, setCurrentLimit] = useState(10);
-  const [totalPages, setTotalPages] = useState(0);
-  const [input, setInput] = useState("");
-  const [expandedRows, setExpandedRows] = useState(null);
-  useEffect(() => {
-    reloadData();
-  }, [props.data]); // Gọi lại reloadData khi prop data thay đổi
+  const [globalFilter, setGlobalFilter] = useState(null);
 
-  const reloadData = () => {
+  const [expandedRows, setExpandedRows] = useState(null);
+
+  useEffect(() => {
     setProducts(props.data.categories);
-    setTotalPages(props.data.totalPages);
-  };
-  const onPageChange = (event) => {
-    setCurrentPage(+event.page + 1);
-    setCurrentLimit(event.rows);
-  };
+  }, [props.data.categories]);
 
   const openNew = () => {
     setProductDialog(true);
+  };
+
+  const reloadData = () => {
+    props.reloadData(); // Gọi hàm reloadData từ props để lấy lại dữ liệu
   };
 
   const leftToolbarTemplate = () => (
@@ -128,12 +119,11 @@ const Category = (props) => {
   const header = (
     <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
       <h4 className="m-0">Quản lý nhóm</h4>
-      <SearchBar value={input} onChange={setInput} />
+      <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Tìm kiếm..." />
     </div>
   );
   return (
     <div className="div_main">
-      {/* <Toast className="toast" ref={toast} /> */}
       <ToastContainer />
       <div className="card">
         <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
@@ -147,7 +137,8 @@ const Category = (props) => {
           onRowToggle={(e) => setExpandedRows(e.data)}
           rowExpansionTemplate={rowExpansionTemplate}
           dataKey="_id"
-          header={header}
+          header={header}  globalFilter={globalFilter}
+          paginator rows={5} rowsPerPageOptions={[5, 10, 15]}
         >
           <Column expander={allowExpansion} style={{ width: "5rem" }} />
           <Column selectionMode="multiple" exportable={true}></Column>
@@ -164,12 +155,6 @@ const Category = (props) => {
           ></Column>
         </DataTable>
 
-        <CustomPaginator
-          currentPage={currentPage}
-          totalRecords={totalPages * currentLimit}
-          rows={currentLimit}
-          onPageChange={onPageChange}
-        />
         <CustomDialog
           visible={deleteProductsDialog}
           header="Thông báo"

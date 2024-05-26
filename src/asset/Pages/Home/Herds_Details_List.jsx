@@ -12,6 +12,7 @@ import { handleGetHerdHarvest1 } from "../../service/harvest_data.js";
 import { handleGetHerdTreatment } from "../../service/treatment_data.js";
 import { AuthContext } from "../../service/user_service.js";
 import { fetchHerd } from "../../service/Herd_data.js";
+
 export default function BasicDemo() {
   const [formData, setFormData] = useState({});
   const [formDataHarvest, setFormDataHarvest] = useState({});
@@ -21,17 +22,22 @@ export default function BasicDemo() {
   const herdId = location.pathname.split("/")[2];
 
   const getAllData = async () => {
-    setFormData(await fetchHerd(herdId, token));
-    setFormDataHarvest(await handleGetHerdHarvest1(herdId, token));
-    setFormDataTreatment(await handleGetHerdTreatment(herdId, token));
+    const herdData = await fetchHerd(herdId, token);
+    const harvestData = await handleGetHerdHarvest1(herdId, token);
+    const treatmentData = await handleGetHerdTreatment(herdId, token);
+    setFormData(herdData);
+    setFormDataHarvest(harvestData);
+    setFormDataTreatment(treatmentData);
   };
 
   useEffect(() => {
     getAllData();
-  }, [formData, formDataHarvest, formDataTreatment]);
+  }, [herdId, token]); // Chỉ gọi API khi herdId hoặc token thay đổi
+
   const reloadData123 = () => {
     getAllData();
   };
+
   return (
     <div className="div_main herdList">
       <YourComponent
@@ -43,7 +49,6 @@ export default function BasicDemo() {
       <div className="card card_herd">
         <TabView>
           <TabPanel header="Thông tin">
-            {/* eslint-disable-next-line react/jsx-pascal-case */}
             <Infor_Herd
               herdId={herdId}
               data={formData}

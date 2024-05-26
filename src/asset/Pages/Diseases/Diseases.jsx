@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
@@ -13,11 +13,11 @@ import Image from "../../../components/Images/Image.jsx";
 import "./Diseases.css";
 import {urlGet, handleDelete } from "../../service/disease_data.js";
 import { AuthContext } from "../../service/user_service.js";
-import {
-  CustomDialog,
-  CustomPaginator,
-} from "../../../components/Total_Interface/index.jsx";
+import { CustomDialog,} from "../../../components/Total_Interface/index.jsx";
 import withLoader from "../../Design/HOC/withLoader.js";
+import { InputText } from 'primereact/inputtext';
+import { ToastContainer } from "react-toastify";
+import { NotifiDelete } from "../../Design/Observable/index.js";
 const emptyProduct = {
   _id: null,
   name: "",
@@ -32,29 +32,22 @@ const emptyProduct = {
   const [product, setProduct] = useState(emptyProduct);
   const [productDialog, setProductDialog] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState(null);
-  const toast = useRef(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentLimit, setCurrentLimit] = useState(10);
-  const [totalPages, setTotalPages] = useState(0);
+  const [globalFilter, setGlobalFilter] = useState(null);
+
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
     setProducts(props.data.diseases);
-    setTotalPages(props.data.totalPages);
-  }, [currentPage, currentLimit]);
+  }, [props.data.diseases]);
 
-  const onPageChange = (event) => {
-    setCurrentPage(+event.page + 1);
-    setCurrentLimit(event.rows);
-  };
   const openNew = () => {
     setProductDialog(true);
   };
 
   const reloadData = () => {
-    setProducts(props.data.diseases);
-    setTotalPages(props.data.totalPages);
+    props.reloadData(); // Gọi hàm reloadData từ props để lấy lại dữ liệu
   };
+  
   const leftToolbarTemplate = () => {
     return (
       <div className="flex flex-wrap gap-2">
@@ -83,11 +76,8 @@ const emptyProduct = {
     for (const selectedProduct of selectedProducts) {
       handleDeleteUser(selectedProduct);
       setDeleteProductsDialog(false);
-      toast.current.show({
-        severity: "success",
-        summary: "Đã xóa",
-        life: 3000,
-      });
+      NotifiDelete();
+
     }
   };
   const deleteProduct = () => {
@@ -95,11 +85,7 @@ const emptyProduct = {
     const firstObject = _products[0];
     handleDeleteUser(firstObject);
     setDeleteProductDialog(false);
-    toast.current.show({
-      severity: "success",
-      summary: "Đã xóa",
-      life: 3000,
-    });
+   NotifiDelete();
   };
 
   const confirmDeleteProduct = (product) => {
@@ -153,10 +139,16 @@ const emptyProduct = {
   const allowExpansion = (rowData) => {
     return rowData;
   };
- 
+  const header = (
+    <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
+      <h4 className="m-0">Quản lý nhóm</h4>
+      <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Tìm kiếm..." />
+    </div>
+  );
   return (
     <div className="div_main">
-      <Toast className="toast" ref={toast} />
+            <ToastContainer />
+
       <div className="card">
         <Toolbar
           className="mb-4"
@@ -171,7 +163,8 @@ const emptyProduct = {
           expandedRows={expandedRows}
           onRowToggle={(e) => setExpandedRows(e.data)}
           rowExpansionTemplate={rowExpansionTemplate}
-          dataKey="_id"
+          dataKey="_id" header={header}  globalFilter={globalFilter}
+          paginator rows={5} rowsPerPageOptions={[5, 10, 15]}
         >
           <Column expander={allowExpansion} style={{ width: "5rem" }} />
           <Column selectionMode="multiple" exportable={true}></Column>
@@ -188,12 +181,6 @@ const emptyProduct = {
             bodyStyle={{ left: "0" }}
           ></Column>
         </DataTable>
-        <CustomPaginator
-          currentPage={currentPage}
-          totalRecords={totalPages * currentLimit}
-          rows={currentLimit}
-          onPageChange={onPageChange}
-        />
 
 <CustomDialog
           visible={deleteProductsDialog}

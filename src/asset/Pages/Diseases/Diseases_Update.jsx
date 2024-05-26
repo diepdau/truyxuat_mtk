@@ -1,7 +1,8 @@
 import React, { useState, useRef, useContext } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { Toast } from "primereact/toast";
+import { ToastContainer } from "react-toastify";
+import { NotifiUpdate } from "../../Design/Observable/index.js";
 import { handleUpdate } from "../../service/disease_data.js";
 import { AuthContext } from "../../service/user_service.js";
 const emptyProduct = {
@@ -39,11 +40,7 @@ function YourComponent({ data, reloadData }) {
         preventive_measures: product.preventive_measures,
       };
       const response = handleUpdate(data._id, dataUpdate, token);
-      toast.current.show({
-        severity: "success",
-        summary: "Sửa hoàn thành",
-        life: 3000,
-      });
+      NotifiUpdate();
       setProduct({
         ...product,
         // name: response.name,
@@ -89,7 +86,7 @@ function YourComponent({ data, reloadData }) {
 
   return (
     <div>
-      <Toast className="toast" ref={toast} />
+      <ToastContainer />
       <div className="container_update_areas">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Tên bệnh</h4>

@@ -1,8 +1,9 @@
-import React, { useState, useRef,useContext } from "react";
+import React, { useState,  useContext } from "react";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
-import { Toast } from "primereact/toast";
-import { handleCreate} from "../../service/disease_data.js";
+import { ToastContainer } from "react-toastify";
+import { NotifiCreate } from "../../Design/Observable/index.js";
+import { handleCreate } from "../../service/disease_data.js";
 import { AuthContext } from "../../service/user_service.js";
 import "./Diseases.css";
 const emptyProduct = {
@@ -12,10 +13,9 @@ const emptyProduct = {
   preventive_measures: "",
 };
 
-function YourComponent({reloadData}) {
+function YourComponent({ reloadData }) {
   const [product, setProduct] = useState(emptyProduct);
   const [errors, setErrors] = useState({});
-  const toast = useRef(null);
   const { token } = useContext(AuthContext);
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -32,20 +32,16 @@ function YourComponent({reloadData}) {
     }
 
     try {
-      const data={
+      const data = {
         name: product.name,
         description: product.description,
         symptoms: product.symptoms,
         preventive_measures: product.preventive_measures,
       };
-      handleCreate(data,token);
-      toast.current.show({
-        severity: "success",
-        summary: "Thêm hoàn thành",
-        life: 3000,
-      });
+      handleCreate(data, token);
       reloadData();
       reloadData();
+      NotifiCreate();
       setProduct(emptyProduct);
     } catch (error) {
       console.log("Error update:", error);
@@ -60,15 +56,14 @@ function YourComponent({reloadData}) {
     if (!product.name.trim()) {
       newErrors.name = "Tên là bắt buộc.";
       isValid = false;
-    } 
+    }
 
     // Kiểm tra lỗi cho trường description
     if (!product.description.trim()) {
       newErrors.description = "Mô tả là bắt buộc.";
       isValid = false;
     } else if (product.description.trim().length < 20) {
-      newErrors.description =
-        "Mô tả ít nhất 20 kí tự.";
+      newErrors.description = "Mô tả ít nhất 20 kí tự.";
       isValid = false;
     }
 
@@ -89,8 +84,8 @@ function YourComponent({reloadData}) {
   };
 
   return (
-    <div >
-      <Toast className="toast" ref={toast} />
+    <div>
+      <ToastContainer />
       <div className="container_update_areas">
         <div style={{ flex: 1, paddingRight: "1rem" }}>
           <h4>Tên</h4>

@@ -14,24 +14,6 @@ export function NotifiDelete() {
   observable.notify("Xóa thành công!");
 }
 
-function toastify(data) {
-  toast.success(data);  
-}
-observable.subscribe(toastify);
-
-function logger(data) {
-  console.log(`${Date.now()} ${data}`);
-}
-observable.subscribe(logger);
-
-// function toastify(data, type) {
-//   if (type === "error") {
-//     toast.error(data);
-//   } else {
-//     toast.success(data);
-//   }
-// }
-
 export function NotifiCreateRecord() {
   observable.notify("Tạo con trong đàn thành công!");
 }
@@ -42,3 +24,21 @@ export function NotifiLogin() {
 export function NotifiRegister() {
   observable.notify("Tạo tài khoản thành công!");
 }
+
+function toastify(data) {
+  toast.success(data);
+}
+observable.subscribe(toastify);
+
+// function logger(data) {
+//   console.log(`${Date.now()} ${data}`);
+// }
+// observable.subscribe(logger);
+
+// function toastify(data, type) {
+//   if (type === "error") {
+//     toast.error(data);
+//   } else {
+//     toast.success(data);
+//   }
+// }

@@ -28,7 +28,6 @@ import Treatments  from "./asset/Pages/Treatments/Treatments.jsx";
 import Main from "./components/Sidebar/Main.jsx";
 import ForgotPasswordPage from "./asset/Pages/Login/ForgotPassword.jsx";
 import ProductInfos from "./asset/Pages/Product_Infos/Product_Infos.jsx";
-
 export const themes = {
   light: {
     background: "#fff",
@@ -52,6 +51,7 @@ const Layout = () => {
       <nav className="navbar">
         <Navbar />
       </nav>
+
           <Main/>
       </>
       
