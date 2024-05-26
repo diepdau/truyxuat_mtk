@@ -138,7 +138,7 @@ function YourComponent({ reloadData, data }) {
         </div>
 
         {/* Cột phải */}
-        <div style={{ flex: 1 }}>
+        <div className="hide-on-small-screen" style={{ flex: 1 }}>
           <h4 style={{ fontWeight: "bold" }}>Hình ảnh</h4>
           <ImageUploader
             uploadUrl={url}

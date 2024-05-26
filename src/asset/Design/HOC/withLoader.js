@@ -13,7 +13,7 @@ export default function withLoader(Element, url) {
         console.error("Error fetching data:", error);
       }
     };
-
+    
     useEffect(() => {
       fetchData();
     }, []);
@@ -21,7 +21,8 @@ export default function withLoader(Element, url) {
     if (!data) {
       return <div>Loading...</div>;
     }
-
     return <Element {...props} reloadData={fetchData} data={data} />;
   };
 }
+
+

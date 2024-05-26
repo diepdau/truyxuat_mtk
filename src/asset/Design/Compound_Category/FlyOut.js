@@ -6,10 +6,10 @@ export function FlyOut(props) {
 
   return (
     <div className={`flyout`}>
-      {React.Children.map(props.children, child =>
-        React.cloneElement(child, { open, toggle })
-      )}
-    </div>
+    {React.Children.map(props.children, child =>
+      React.cloneElement(child, { open, toggle })
+    )}
+  </div>
   );
 }
 
@@ -20,15 +20,17 @@ function Toggle({ open, toggle }) {
     </div>
   );
 }
-
 function List({ children, open }) {
   return open && <ul className="flyout-list">{children}</ul>;
 }
 
-function Item({ children }) {
-  return <li className="flyout-item">{children}</li>;
+function Item({ children, onDelete }) {
+  return (
+    <li className="flyout-item" onClick={onDelete}>
+      {children}
+    </li>
+  );
 }
-
 FlyOut.Toggle = Toggle;
 FlyOut.List = List;
 FlyOut.Item = Item;

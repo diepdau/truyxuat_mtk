@@ -109,7 +109,7 @@ const Category = (props) => {
         />
       </TabPanel>
       <TabPanel className="on-small-screen" header="Hình ảnh">
-        <ImageList />
+        <ImageList source={data.images} />
       </TabPanel>
     </TabView>
   );

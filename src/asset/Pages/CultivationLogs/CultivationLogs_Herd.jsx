@@ -13,6 +13,7 @@ import CultivationLogs_Create from "./CultivationLogs_Create.jsx";
 import { handleDelete, handleGet } from "../../service/cultivationLog_data.js";
 import { AuthContext } from "../../service/user_service.js";
 import {CustomDialog} from "../../../components/Total_Interface/index.jsx";
+import ImageList from "../../Design/Compound_Category/ImageList.js";
 const emptyProduct = {
   _id: null,
   herd: {
@@ -118,6 +119,9 @@ export default function CulivationLogs_Herd({ idherd }) {
           <TabPanel header="Thông tin">
             <CultivationLogs_Update reloadData={reloadData} data={data} />
           </TabPanel>
+          <TabPanel className="on-small-screen" header="Hình ảnh">
+        <ImageList source={data.images} />
+      </TabPanel>
         </TabView>
       </>
     );

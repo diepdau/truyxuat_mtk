@@ -1,34 +1,26 @@
-import React from "react";
+import React,{useState} from "react";
 import FlyOutMenu from "./FlyOutMenu";
-const sources =  [
-  
-    {
-        path: "https://res.cloudinary.com/dzo0r5bea/image/upload/v1715523406/agriculture_traceability/wtfjaopfscyrvirsc8vw.jpg",
-        filename: "agriculture_traceability/wtfjaopfscyrvirsc8vw",
-        _id: "6640cf4e96c02101c5b57c5f"
-    },
-    {
-        path: "https://res.cloudinary.com/dzo0r5bea/image/upload/v1715523406/agriculture_traceability/tktswm8ig59oit8ujmpq.jpg",
-        filename: "agriculture_traceability/tktswm8ig59oit8ujmpq",
-        _id: "6640cf4e96c02101c5b57c60"
-    },
-    {
-        path: "https://res.cloudinary.com/dzo0r5bea/image/upload/v1715523406/agriculture_traceability/evlbekjhgpuewshuhof9.jpg",
-        filename: "agriculture_traceability/evlbekjhgpuewshuhof9",
-        _id: "6640cf4e96c02101c5b57c61"
-    }
-  ]
 
-function Image({ source }) {
+function Image({ source, onDelete }) {
   return (
-      <div className="image-item">
+    <div className="image-item">
       <img className="imgactive" src={source.path} alt="Squirrel" />
-      <FlyOutMenu />
-      </div>
-   
+      <FlyOutMenu onDelete={onDelete}/>
+    </div>
   );
 }
 
-export default function ImageList() {
-  return sources.map((source, i) => <Image source={source} key={i} />);
-};
+
+export default function ImageList({ source }) {
+  const [images, setImages] = useState(source);
+
+  const handleDelete = (id) => {
+    const updatedImages = images.filter(image => image._id !== id);
+    console.log(images);
+    setImages(updatedImages);
+  };
+
+  return images.map((item, index) => (
+    <Image source={item} key={index} onDelete={() => handleDelete(item._id)} />
+  ));
+}
